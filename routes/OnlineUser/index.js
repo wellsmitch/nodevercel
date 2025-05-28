@@ -1,7 +1,7 @@
-const router = require("@routes/createRouter")
+const router = require("../createRouter")
 const multer = require('multer')
 const NetWorkAction = require("@routes/NetWorkAction")
-const Result = require("@utils/Result")
+const Result = require("../../utils/Result")
 
 const queryUser = async (account, password) => {
  const netRes = await NetWorkAction.get("/OnlineUser", {

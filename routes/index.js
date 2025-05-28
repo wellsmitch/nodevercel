@@ -1,6 +1,6 @@
-const router = require("@routes/createRouter")
+const router = require("./createRouter")
 
-require("@routes/OnlineUser/index.js")
+require("./OnlineUser/index.js")
 
 
 
