@@ -5,10 +5,22 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+const bodyParser = require("body-parser")         //获取模块
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+app.use(logger('dev'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookieParser());
+app.use("/downloads", express.static(path.join(__dirname, 'files')));
+
+// app.use(bodyParser.urlencoded({extended: true})); //创建 application/x-www-form-urlencoded 解析
+// app.use(bodyParser.json());
 
 
 
@@ -46,13 +58,6 @@ app.use('/downloads', express.static('files'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-
-app.use(logger('dev'));
-// app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use("/downloads", express.static(path.join(__dirname, 'files')));
 
 
 
