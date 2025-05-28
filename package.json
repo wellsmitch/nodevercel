@@ -17,6 +17,7 @@
     "body-parser": "^2.2.0",
     "cookie-parser": "~1.4.4",
     "crypto-js": "^4.2.0",
+    "dayjs": "^1.11.13",
     "debug": "~2.6.9",
     "dotenv": "^16.4.7",
     "ejs": "~2.6.1",
