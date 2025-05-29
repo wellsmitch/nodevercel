@@ -51,7 +51,7 @@ const queryUser = async (account, password) => {
  return netRes
 }
 
-router.post('/book', multer().any(), function(req, res, next) {
+router.post('/booktest', multer().any(), function(req, res, next) {
  console.log('multer',multer)
   res.send({
    a:123,
