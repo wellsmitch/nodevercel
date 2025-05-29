@@ -1,8 +1,10 @@
-const router = require("../createRouter")
+var express = require('express');
 const dayjs = require("dayjs")
 const multer = require('multer')
+const router = require("../createRouter")
 const NetWorkAction = require("../NetWorkAction")
 const Result = require("../../utils/Result")
+console.log('express',express)
 console.log('dayjs',dayjs)
 
 const queryUser = async (account, password) => {
