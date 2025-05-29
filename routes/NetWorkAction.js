@@ -1,6 +1,6 @@
 const axios = require("axios")
 console.log('axios', axios)
-// const CryptoJS = require("crypto-js")
+const CryptoJS = require("crypto-js")
 const { leancloudApi, appId, appKey, marsterKey } = require("./constant.js")
 
 
