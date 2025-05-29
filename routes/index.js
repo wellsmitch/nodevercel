@@ -10,7 +10,7 @@ var router = express.Router();
 // var dotenv = require('dotenv');
 // const CryptoJS = require("crypto-js")
 // const dayjs = require("dayjs")
-// const multer = require('multer')
+const multer = require('multer')
 // const NetWorkAction = require("./NetWorkAction")
 // const Result = require("../utils/Result")
 console.log('express',express)
@@ -52,6 +52,7 @@ const queryUser = async (account, password) => {
 }
 
 router.post('/book', function(req, res, next) {
+ console.log('multer',multer)
   res.send('index.js book');
 })
 
