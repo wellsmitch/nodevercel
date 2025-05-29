@@ -1,12 +1,12 @@
 const axios = require("axios")
 console.log('axios',axios)
 // const CryptoJS = require("crypto-js")
-// const { leancloudApi, appId, appKey, marsterKey } = require("./constant")
+const { leancloudApi, appId, appKey, marsterKey } = require("./constant")
 
 
-// const NetWorkAction = axios.create({
-//  baseURL: leancloudApi,
-// });
+const NetWorkAction = axios.create({
+ baseURL: leancloudApi,
+});
 
 // NetWorkAction.interceptors.request.use((config) => {
 //    const md5Fn = (str) => CryptoJS.MD5(str)
