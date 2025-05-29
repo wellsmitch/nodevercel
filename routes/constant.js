@@ -4,7 +4,7 @@ const appId = "A9aaTVA1J2L2uEp8DQH6btzA-gzGzoHsz";
 const appKey = "0rYyOPruxUZkcaU8EXoCr60W"
 const marsterKey = "RfAfAetdO2vUko1qoExUFqWw";
 
-module.exports = {
+export {
  leancloudApi,
  appId,
  appKey,

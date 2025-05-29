@@ -1,17 +1,18 @@
-require('module-alias/register')
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+// import 'module-alias/register'
+import createError from 'http-errors';
+import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import { fileURLToPath } from 'node:url';
 
+import bodyParser from "body-parser"        //获取模块
 
-const bodyParser = require("body-parser")         //获取模块
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var onelineUser = require('./routes/onelineUser');
-
+import indexRouter from './routes/index.js';
+import usersRouter from './routes/users.js';
+import onelineUser from './routes/onelineUser.js';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 var app = express();
 
 app.use(logger('dev'));
@@ -24,35 +25,35 @@ app.use("/", express.static(path.join(__dirname, 'public')));
 // app.use(bodyParser.urlencoded({extended: true})); //创建 application/x-www-form-urlencoded 解析
 // app.use(bodyParser.json());
 
-const info = {a:123}
+const info = { a: 123 }
 // console.log(">>>>>>>>>>>a", info?.a);
 
 
 app.route('/book')
-.get(function (req, res,next) {
-  // res.send('Get a random book')
- 
+  .get(function (req, res, next) {
+    // res.send('Get a random book')
+
     // 使用http-errors创建一个400 Bad Request错误
-  
+
     // app.render('index', { title: 'Tobi' }, function (err, html) {
     //   console.log("***",err, html);
-      
+
     // })
     return next(createError(400, 'Invalid user ID'));
 
-})
-.post(function (req, res) {
-  res.send('Add a book')
-})
-.put(function (req, res) {
-  res.send('Update the book')
-})
+  })
+  .post(function (req, res) {
+    res.send('Add a book')
+  })
+  .put(function (req, res) {
+    res.send('Update the book')
+  })
 
 app.set("sss", "sssaaa")
 app.disable("sss")
 app.enable("sss")
 const getKey = app.get("sss")
-console.log("getKey>>",getKey);
+console.log("getKey>>", getKey);
 
 
 app.use('/', indexRouter);
@@ -72,14 +73,14 @@ app.get('/ttt', (req, res) => {
 })
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   console.log("404fn>>>>>>>>>");
 
-  next(createError(404,"没找到"));
+  next(createError(404, "没找到"));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   const express1 = express;
   // set locals, only providing error in development
   res.locals.message = err.message;
@@ -90,4 +91,4 @@ app.use(function(err, req, res, next) {
   res.render('aaa');
 });
 
-module.exports = app;
+export default app;

@@ -1,8 +1,10 @@
-const axios = require("axios")
-console.log('axios', axios)
-const CryptoJS = require("crypto-js")
-const { leancloudApi, appId, appKey, marsterKey } = require("./constant.js")
-
+import axios from "axios"
+import { fileURLToPath } from 'node:url';
+import path from 'node:path'
+import CryptoJS from "crypto-js"
+import { leancloudApi, appId, appKey, marsterKey } from "./constant.js"
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const NetWorkAction = axios.create({
   baseURL: leancloudApi,
@@ -15,7 +17,6 @@ NetWorkAction.interceptors.request.use((config) => {
   const dd = Date.now();
   const tempInfo = !config.headers.autoWell ? { "X-LC-Sign": `${md5Fn(dd + appKey)},${dd}` }
     : { "X-LC-key": `${md5Fn(dd + marsterKey)},${dd},master` }
-  console.log('tempInfo', tempInfo)
   config.headers = {
     ...config.headers,
     ...tempInfo,
@@ -27,4 +28,4 @@ NetWorkAction.interceptors.request.use((config) => {
 })
 
 
-module.exports = NetWorkAction
+export default NetWorkAction

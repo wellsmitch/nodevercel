@@ -1,7 +1,6 @@
-const router = require("./createRouter")
+import router from "./createRouter.js"
 
-require("./onelineUser")
+import "./onelineUser.js"
 
 
-
-module.exports = router;
+export default router

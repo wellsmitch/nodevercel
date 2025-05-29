@@ -1,7 +1,7 @@
-const multer = require('multer')
-const router = require("../createRouter")
-const NetWorkAction = require("../NetWorkAction")
-const Result = require("../../utils/Result")
+import multer from 'multer'
+import router from "../createRouter"
+import NetWorkAction from "../NetWorkAction"
+import Result from "../../utils/Result"
 
 const queryUser = async (account, password) => {
  const netRes = await NetWorkAction.get("/OnlineUser", {

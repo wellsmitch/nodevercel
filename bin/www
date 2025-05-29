@@ -4,12 +4,16 @@
  * Module dependencies.
  */
 
-require("dotenv").config()
-
-var app = require('../app');
-var debug = require('debug')('app:server');
-var http = require('http');
-
+import dotenv from "dotenv"
+import { fileURLToPath } from 'node:url';
+import app from '../app.js';
+import path from 'node:path'
+import debug_ from 'debug';
+import http from 'http';
+dotenv.config()
+const debug = debug_('app:server')
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 /**
  * Get port from environment and store in Express.
  */
@@ -82,7 +86,7 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-  console.log(__dirname,__filename);
+  // console.log(__dirname,__filename);
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
