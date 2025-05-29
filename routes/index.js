@@ -1,4 +1,8 @@
-const router = require("./createRouter")
+// const router = require("./createRouter")
+
+
+var express = require('express');
+var router = express.Router();
 
 // require("./OnlineUser/index.js")
 
@@ -8,11 +12,32 @@ const CryptoJS = require("crypto-js")
 // const dayjs = require("dayjs")
 const multer = require('multer')
 const NetWorkAction = require("./NetWorkAction")
-const Result = require("../utils/Result")
+// const Result = require("../utils/Result")
 console.log('express',express)
 console.log('dotenv',dotenv)
 console.log('dayjs',dayjs)
 console.log('CryptoJS',CryptoJS)
+
+class Result {
+ constructor(props) {
+  this.info = props || {}
+ }
+ getResult() {
+  const { status, message,data } = this.info || {}
+  if (this.info > 300) {
+   return {
+    status,
+    message,
+   }
+  } else {
+   return {
+    message,
+    ...data
+   }
+  }
+
+ }
+}
 
 const queryUser = async (account, password) => {
  const netRes = await NetWorkAction.get("/OnlineUser", {
