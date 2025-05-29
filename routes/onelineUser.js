@@ -7,7 +7,7 @@ router.get("/aaa", multer().any(), async (req, res) => {
 
 
 // const NetWorkAction = require("./NetWorkAction")
-// const Result = require("../utils/Result")
+const Result = require("../utils/Result")
 
 // const queryUser = async (account, password) => {
 //  const netRes = await NetWorkAction.get("/OnlineUser", {
@@ -21,18 +21,19 @@ router.get("/aaa", multer().any(), async (req, res) => {
 //  return netRes
 // }
 
-// router.post("/login", multer().any(), async (req, res) => {
-//  const { account, password } = req.body
-//  try {
-//   const netRes = await queryUser(account, password)
+router.post("/login", multer().any(), async (req, res) => {
+   res.send(new Result({ message: "登录失败" }).getResult())
+ // const { account, password } = req.body
+ // try {
+ //  const netRes = await queryUser(account, password)
 
-//   res.send(new Result({ ...netRes, message: netRes.data?.results?.length > 0 ? "登录成功" : "用户不存在" }).getResult())
+ //  res.send(new Result({ ...netRes, message: netRes.data?.results?.length > 0 ? "登录成功" : "用户不存在" }).getResult())
 
-//   return
-//  } catch (errr) {
-//   res.send(new Result({ message: "登录失败" }).getResult())
-//  }
-// })
+ //  return
+ // } catch (errr) {
+ //  res.send(new Result({ message: "登录失败" }).getResult())
+ // }
+})
 
 
 // router.post("/regeister", multer().any(), async (req, res) => {
