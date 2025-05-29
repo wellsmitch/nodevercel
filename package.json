@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start1": "npm run dev",
-    "dev1": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www"
   },
   "_moduleAliases": {
     "@app": "app",
