@@ -1,5 +1,9 @@
 const multer = require('multer')
-console.log('multer',multer)
+console.log('multer', multer)
+router.get("/aaa", multer().any(), async (req, res) => {
+ res.send("aaa---------")
+})
+
 // const router = require("./createRouter")
 // const NetWorkAction = require("./NetWorkAction")
 // const Result = require("../utils/Result")
