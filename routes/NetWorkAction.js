@@ -13,11 +13,12 @@ NetWorkAction.interceptors.request.use((config) => {
  const dd = Date.now();
  const tempInfo = !config?.headers?.autoWell ? { "X-LC-Sign": `${md5Fn(dd + appKey)},${dd}` }
   : { "X-LC-key": `${md5Fn(dd + marsterKey)},${dd},master` }
- config.headers = {
-  ...config.headers,
-  ...tempInfo,
-  "X-LC-Id": appId,
- }
+  console.log('tempInfo',tempInfo)
+//  config.headers = {
+//   ...config.headers,
+//   ...tempInfo,
+//   "X-LC-Id": appId,
+//  }
  return config
 }, (err) => {
  return Promise.reject(err)
