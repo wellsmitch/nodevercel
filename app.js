@@ -4,8 +4,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const multer = require('multer')
-console.log('multer',multer)
+
 
 const bodyParser = require("body-parser")         //获取模块
 
