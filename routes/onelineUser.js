@@ -26,7 +26,7 @@ router.post("/login", multer().any(), async (req, res) => {
  try {
   const netRes = await queryUser(account, password)
 
-  res.send(new Result({ ...netRes, message: netRes?.data?.results?.length > 0 ? "登录成功" : "用户不存在" }).getResult())
+  res.send(new Result({ ...netRes, message: netRes.data.results.length > 0 ? "登录成功" : "用户不存在" }).getResult())
 
   return
  } catch (errr) {
