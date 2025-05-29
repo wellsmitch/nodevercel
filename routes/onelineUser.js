@@ -22,7 +22,6 @@ const queryUser = async (account, password) => {
 }
 
 router.post("/login", multer().any(), async (req, res) => {
-   res.send(new Result({ message: "登录失败" }).getResult())
  const { account, password } = req.body
  try {
   const netRes = await queryUser(account, password)
