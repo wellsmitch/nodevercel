@@ -1,7 +1,7 @@
 import multer from 'multer'
-import router from "../createRouter"
-import NetWorkAction from "../NetWorkAction"
-import Result from "../../utils/Result"
+import router from "../createRouter.js"
+import NetWorkAction from "../NetWorkAction.js"
+import Result from "../../utils/Result.js"
 
 const queryUser = async (account, password) => {
  const netRes = await NetWorkAction.get("/OnlineUser", {
