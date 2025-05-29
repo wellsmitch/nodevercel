@@ -8,7 +8,7 @@ const NetWorkAction = axios.create({
  baseURL: leancloudApi,
 });
 
-// NetWorkAction.interceptors.request.use((config) => {
+NetWorkAction.interceptors.request.use((config) => {
 //    const md5Fn = (str) => CryptoJS.MD5(str)
 //  const dd = Date.now();
 //  const tempInfo = !config?.headers?.autoWell ? { "X-LC-Sign": `${md5Fn(dd + appKey)},${dd}` }
@@ -18,10 +18,10 @@ const NetWorkAction = axios.create({
 //   ...tempInfo,
 //   "X-LC-Id": appId,
 //  }
-//  return config
-// }, (err) => {
-//  return Promise.reject(err)
-// })
+ return config
+}, (err) => {
+ return Promise.reject(err)
+})
 
 
 module.exports = NetWorkAction
