@@ -10,6 +10,7 @@ const bodyParser = require("body-parser")         //获取模块
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var onelineUser = require('./routes/onelineUser');
 
 var app = express();
 
@@ -53,6 +54,7 @@ console.log("getKey>>",getKey);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/onlineUser', onelineUser);
 
 app.use('/downloads', express.static('files'));
 // view engine setup
