@@ -9,11 +9,12 @@ const NetWorkAction = axios.create({
 });
 
 NetWorkAction.interceptors.request.use((config) => {
-   const md5Fn = (str) => CryptoJS.MD5(str)
- const dd = Date.now();
- const tempInfo = !config?.headers?.autoWell ? { "X-LC-Sign": `${md5Fn(dd + appKey)},${dd}` }
-  : { "X-LC-key": `${md5Fn(dd + marsterKey)},${dd},master` }
-  console.log('tempInfo',tempInfo)
+  console.log('appId',appId)
+//    const md5Fn = (str) => CryptoJS.MD5(str)
+//  const dd = Date.now();
+//  const tempInfo = !config?.headers?.autoWell ? { "X-LC-Sign": `${md5Fn(dd + appKey)},${dd}` }
+//   : { "X-LC-key": `${md5Fn(dd + marsterKey)},${dd},master` }
+  // console.log('tempInfo',tempInfo)
 //  config.headers = {
 //   ...config.headers,
 //   ...tempInfo,
