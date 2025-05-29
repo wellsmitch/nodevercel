@@ -2,7 +2,7 @@ const multer = require('multer')
 const router = require("./createRouter")
 console.log('multer', multer)
 router.get("/aaa", multer().any(), async (req, res) => {
- res.send("aaa---------")
+ res.send(req.body)
 })
 
 
