@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start1": "npm run dev1",
-    "dev1": "nodemon ./bin/www"
+    "start": "npm run dev",
+    "dev": "nodemon ./bin/www"
   },
   "_moduleAliases": {
     "@app": "app",
