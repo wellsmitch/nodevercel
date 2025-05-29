@@ -1,25 +1,27 @@
 const router = require("./createRouter")
+const axios = require("axios")
 const multer = require('multer')
 console.log('multer', multer)
+console.log('axios', axios)
 router.get("/aaa", multer().any(), async (req, res) => {
  res.send("aaa---------")
 })
 
 
-const NetWorkAction = require("./NetWorkAction")
-const Result = require("../utils/Result")
+// const NetWorkAction = require("./NetWorkAction")
+// const Result = require("../utils/Result")
 
-const queryUser = async (account, password) => {
- const netRes = await NetWorkAction.get("/OnlineUser", {
-  params: {
-   where: {
-    account,
-    password
-   }
-  }
- })
- return netRes
-}
+// const queryUser = async (account, password) => {
+//  const netRes = await NetWorkAction.get("/OnlineUser", {
+//   params: {
+//    where: {
+//     account,
+//     password
+//    }
+//   }
+//  })
+//  return netRes
+// }
 
 // router.post("/login", multer().any(), async (req, res) => {
 //  const { account, password } = req.body
