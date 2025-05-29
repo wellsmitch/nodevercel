@@ -1,10 +1,11 @@
+const router = require("./createRouter")
 const multer = require('multer')
 console.log('multer', multer)
 router.get("/aaa", multer().any(), async (req, res) => {
  res.send("aaa---------")
 })
 
-// const router = require("./createRouter")
+
 // const NetWorkAction = require("./NetWorkAction")
 // const Result = require("../utils/Result")
 
@@ -56,3 +57,6 @@ router.get("/aaa", multer().any(), async (req, res) => {
 //   res.send(new Result({ message: "注册失败" }).getResult())
 //  }
 // })
+
+
+module.exports = router
