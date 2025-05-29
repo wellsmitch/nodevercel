@@ -39,7 +39,7 @@ router.post("/register", multer().any(), async (req, res) => {
  const { account, password } = req.body
  try {
   const netRes = await queryUser(account, password)
-  if (netRes?.data?.results?.length > 0) {
+  if (netRes.data.results.length > 0) {
    res.send({
     message: "用户已存在"
    })
