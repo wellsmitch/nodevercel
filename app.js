@@ -26,7 +26,7 @@ app.use("/", express.static(path.join(__dirname, 'public')));
 // app.use(bodyParser.json());
 
 const info = { a: 123 }
-// console.log(">>>>>>>>>>>a", info?.a);
+console.log(">>>>>>>>>>>a", info?.a);
 
 
 app.route('/book')
