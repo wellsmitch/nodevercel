@@ -1,12 +1,7 @@
 import multer from 'multer'
-import router from "./createRouter.js"
-router.get("/aaa", multer().any(), async (req, res) => {
- res.send(req.body)
-})
-
-
-import NetWorkAction from "./NetWorkAction.js"
-import Result from "../utils/Result.js"
+import router from "../createRouter.cjs"
+import NetWorkAction from "../NetWorkAction.cjs"
+import Result from "../../utils/Result.cjs"
 
 const queryUser = async (account, password) => {
  const netRes = await NetWorkAction.get("/OnlineUser", {
@@ -34,7 +29,7 @@ router.post("/login", multer().any(), async (req, res) => {
 })
 
 
-router.post("/register", multer().any(), async (req, res) => {
+router.post("/regeister", multer().any(), async (req, res) => {
  const { account, password } = req.body
  try {
   const netRes = await queryUser(account, password)
@@ -56,6 +51,3 @@ router.post("/register", multer().any(), async (req, res) => {
   res.send(new Result({ message: "注册失败" }).getResult())
  }
 })
-
-
-export default router

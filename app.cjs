@@ -8,9 +8,9 @@ import { fileURLToPath } from 'node:url';
 
 import bodyParser from "body-parser"        //获取模块
 
-import indexRouter from './routes/index.js';
-import usersRouter from './routes/users.js';
-import onelineUser from './routes/onelineUser.js';
+import indexRouter from './routes/index.cjs';
+import usersRouter from './routes/users.cjs';
+import onelineUser from './routes/onelineUser.cjs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 var app = express();
