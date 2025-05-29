@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start1": "npm run dev",
+    "start": "npm run dev",
     "dev": "nodemon ./bin/www"
   },
   "_moduleAliases": {
