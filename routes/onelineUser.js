@@ -1,8 +1,6 @@
 const router = require("./createRouter")
-const axios = require("axios")
 const multer = require('multer')
 console.log('multer', multer)
-console.log('axios', axios)
 router.get("/aaa", multer().any(), async (req, res) => {
  res.send("aaa---------")
 })
