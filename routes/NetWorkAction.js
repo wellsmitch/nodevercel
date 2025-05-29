@@ -1,7 +1,7 @@
 const axios = require("axios")
 console.log('axios',axios)
 // const CryptoJS = require("crypto-js")
-const { leancloudApi, appId, appKey, marsterKey } = require("./constant")
+const { leancloudApi, appId, appKey, marsterKey } = require("./constant.js")
 
 
 const NetWorkAction = axios.create({
