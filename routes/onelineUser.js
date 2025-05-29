@@ -1,12 +1,12 @@
-import multer from 'multer'
-import router from "./createRouter.js"
+const multer = require('multer')
+const router = require("./createRouter.js")
 router.get("/aaa", multer().any(), async (req, res) => {
  res.send(req.body)
 })
 
 
-import NetWorkAction from "./NetWorkAction.js"
-import Result from "../utils/Result.js"
+const NetWorkAction = require("./NetWorkAction.js")
+const Result = require("../utils/Result.js")
 
 const queryUser = async (account, password) => {
  const netRes = await NetWorkAction.get("/OnlineUser", {
@@ -58,4 +58,4 @@ router.post("/register", multer().any(), async (req, res) => {
 })
 
 
-export default router
+module.exports = router

@@ -19,4 +19,4 @@ class Result {
  }
 }
 
-export default Result
+module.exports = Result

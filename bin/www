@@ -4,18 +4,17 @@
  * Module dependencies.
  */
 
-import dotenv from "dotenv"
-import { fileURLToPath } from 'node:url';
-import app from '../app.js';
-import path from 'node:path'
-import debug_ from 'debug';
-import http from 'http';
+const dotenv = require("dotenv")
+const { fileURLToPath } = require('node:url');
+const app = require('../app.js');
+const path = require('node:path')
+const debug_ = require('debug');
+const http = require('http');
 dotenv.config()
 const debug = debug_('app:server')
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+
 /**
- * Get port from environment and store in Express.
+ * Get port = require(environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || '3000');

@@ -1,18 +1,17 @@
-// import 'module-alias/register'
-import createError from 'http-errors';
-import express from 'express';
-import path from 'path';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
-import { fileURLToPath } from 'node:url';
+// const 'module-alias/register'
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const { fileURLToPath } = require('node:url');
 
-import bodyParser from "body-parser"        //获取模块
+const bodyParser = require("body-parser")        //获取模块
 
-import indexRouter from './routes/index.js';
-import usersRouter from './routes/users.js';
-import onelineUser from './routes/onelineUser.js';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const indexRouter = require('./routes/index.js');
+const usersRouter = require('./routes/users.js');
+const onelineUser = require('./routes/onelineUser.js');
+
 var app = express();
 
 app.use(logger('dev'));
@@ -91,4 +90,4 @@ app.use(function (err, req, res, next) {
   res.render('aaa');
 });
 
-export default app;
+module.exports = app;

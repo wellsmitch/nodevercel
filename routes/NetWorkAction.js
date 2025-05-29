@@ -1,10 +1,9 @@
-import axios from "axios"
-import { fileURLToPath } from 'node:url';
-import path from 'node:path'
-import CryptoJS from "crypto-js"
-import { leancloudApi, appId, appKey, marsterKey } from "./constant.js"
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const axios =require("axios") 
+const { fileURLToPath }= require('node:url');
+const path= require('node:path')
+const CryptoJS= require("crypto-js")
+const { leancloudApi, appId, appKey, marsterKey }= require("./constant.js")
+
 
 const NetWorkAction = axios.create({
   baseURL: leancloudApi,
@@ -28,4 +27,4 @@ NetWorkAction.interceptors.request.use((config) => {
 })
 
 
-export default NetWorkAction
+module.exports = NetWorkAction
