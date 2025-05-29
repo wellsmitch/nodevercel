@@ -2,7 +2,7 @@ import axios from "axios"
 import { fileURLToPath } from 'node:url';
 import path from 'node:path'
 import CryptoJS from "crypto-js"
-import { leancloudApi, appId, appKey, marsterKey } from "./constant.cjs"
+import { leancloudApi, appId, appKey, marsterKey } from "./constant.js"
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 

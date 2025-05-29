@@ -6,7 +6,7 @@
 
 import dotenv from "dotenv"
 import { fileURLToPath } from 'node:url';
-import app from '../app.cjs';
+import app from '../app.js';
 import path from 'node:path'
 import debug_ from 'debug';
 import http from 'http';
