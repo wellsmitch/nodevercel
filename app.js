@@ -31,7 +31,7 @@ console.log(">>>>>>>>>>>a", info?.a);
 
 app.route('/book')
   .get(function (req, res, next) {
-    // res.send('Get a random book')
+    res.send('Get a random book')
 
     // 使用http-errors创建一个400 Bad Request错误
 
