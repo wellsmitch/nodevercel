@@ -1,7 +1,7 @@
 // // const 'module-alias/register'
 // // require('polyfill')
 // const createError = require('http-errors');
-// const express = require('express');
+const express = require('express');
 // const path = require('path');
 // const cookieParser = require('cookie-parser');
 // const logger = require('morgan');
@@ -13,7 +13,7 @@
 // // const usersRouter = require('./routes/users.js');
 // // const onelineUser = require('./routes/onelineUser.js');
 
-// var app = express();
+var app = express();
 
 // app.use(logger('dev'));
 // app.use(express.urlencoded({ extended: true }));
@@ -91,4 +91,4 @@
 //   res.render('aaa');
 // });
 
-// module.exports = app;
+module.exports = app;
