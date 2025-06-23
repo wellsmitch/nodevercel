@@ -5,13 +5,13 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const { fileURLToPath } = require('node:url');
+// const { fileURLToPath } = require('node:url');
 
-const bodyParser = require("body-parser")        //获取模块
+// const bodyParser = require("body-parser")        //获取模块
 
-const indexRouter = require('./routes/index.js');
-const usersRouter = require('./routes/users.js');
-const onelineUser = require('./routes/onelineUser.js');
+// const indexRouter = require('./routes/index.js');
+// const usersRouter = require('./routes/users.js');
+// const onelineUser = require('./routes/onelineUser.js');
 
 var app = express();
 
@@ -56,9 +56,9 @@ const getKey = app.get("sss")
 console.log("getKey>>", getKey);
 
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/onlineUser', onelineUser);
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
+// app.use('/onlineUser', onelineUser);
 
 app.use('/downloads', express.static('files'));
 // view engine setup
