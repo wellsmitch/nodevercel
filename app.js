@@ -25,8 +25,8 @@ var app = express();
 // app.use(bodyParser.urlencoded({extended: true})); //创建 application/x-www-form-urlencoded 解析
 // app.use(bodyParser.json());
 
-const info = { a: 123 }
-console.log(">>>>>>>>>>>a", info?.a);
+// const info = { a: 123 }
+// console.log(">>>>>>>>>>>a", info?.a);
 
 
 // app.route('/book')
