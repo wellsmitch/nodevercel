@@ -1,10 +1,10 @@
 // // const 'module-alias/register'
 // // require('polyfill')
-const createError = require('http-errors');
+// const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+// const cookieParser = require('cookie-parser');
+// const logger = require('morgan');
 // const { fileURLToPath } = require('node:url');
 
 // const bodyParser = require("body-parser")        //获取模块
@@ -15,10 +15,10 @@ const logger = require('morgan');
 
 var app = express();
 
-app.use(logger('dev'));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cookieParser());
+// app.use(logger('dev'));
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(cookieParser());
 app.use("/downloads", express.static(path.join(__dirname, 'files')));
 app.use("/", express.static(path.join(__dirname, 'public')));
 
@@ -29,25 +29,25 @@ const info = { a: 123 }
 console.log(">>>>>>>>>>>a", info?.a);
 
 
-app.route('/book')
-  .get(function (req, res, next) {
-    res.send('Get a random book')
+// app.route('/book')
+//   .get(function (req, res, next) {
+//     res.send('Get a random book')
 
-    // 使用http-errors创建一个400 Bad Request错误
+//     // 使用http-errors创建一个400 Bad Request错误
 
-    // app.render('index', { title: 'Tobi' }, function (err, html) {
-    //   console.log("***",err, html);
+//     // app.render('index', { title: 'Tobi' }, function (err, html) {
+//     //   console.log("***",err, html);
 
-    // })
-    return next(createError(400, 'Invalid user ID'));
+//     // })
+//     return next(createError(400, 'Invalid user ID'));
 
-  })
-  .post(function (req, res) {
-    res.send('Add a book')
-  })
-  .put(function (req, res) {
-    res.send('Update the book')
-  })
+//   })
+//   .post(function (req, res) {
+//     res.send('Add a book')
+//   })
+//   .put(function (req, res) {
+//     res.send('Update the book')
+//   })
 
 app.set("sss", "sssaaa")
 app.disable("sss")
@@ -73,11 +73,11 @@ app.get('/ttt', (req, res) => {
 })
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  console.log("404fn>>>>>>>>>");
+// app.use(function (req, res, next) {
+//   console.log("404fn>>>>>>>>>");
 
-  next(createError(404, "没找到"));
-});
+//   next(createError(404, "没找到"));
+// });
 
 // error handler
 app.use(function (err, req, res, next) {
