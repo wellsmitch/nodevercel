@@ -1,8 +1,56 @@
 const multer = require('multer')
 const router = require("./createRouter.js")
+var svgCaptcha = require('svg-captcha');
+const jwt = require("jsonwebtoken");
+const jwtConfig = require("../config/secret.js");
+var { expressjwt } = require("express-jwt");
+var { authenticateJWT } = require("../middleware/index.js");
+const svg2img = require('svg2img');
+
+router.get("/setSession", async (req, res) => {
+ req.session[`s-${Math.random()}`] = req.query.session;
+ res.send(req.session)
+})
+
+router.get("/loginReturnToken", [authenticateJWT], async (req, res) => {
+ const { ttoken } = req.query;
+ res.send(req.user)
+})
+router.get("/registerReturnToken", async (req, res) => {
+ const { username, password } = req.body;
+ if (username != "admin" && password != "123456") {
+  return res.send({
+   status: 1,
+   msg: "登录失败",
+  });
+ }
+ //登录成功之后，生成jwt字符串,并通过token的形式返回给客户端
+ //参数:用户的信息对象，加密的秘钥，配置的对象(当前token的有效期 30s | 2h)
+ const token = jwt.sign({ username: username }, jwtConfig.jwtSecret, {
+  expiresIn: "60s",
+ });
+ res.send({
+  status: 0,
+  msg: "登录成功",
+  token,
+ });
+})
+router.get("/yzm", multer().any(), async (req, res) => {
+ var captcha = svgCaptcha.create({ color: true, background: "#eaeaea", size: 8, width: 200 });
+ res.set("Content-Type", "image/png");
+ svg2img(captcha.data, function (error, buffer) {
+  //returns a Buffer
+  // fs.writeFileSync('foo1.png', buffer);
+  if (!error) {
+   res.send(buffer)
+  }
+ });
+})
+
 router.get("/aaa", multer().any(), async (req, res) => {
  res.send(req.body)
 })
+
 
 
 const NetWorkAction = require("./NetWorkAction.js")

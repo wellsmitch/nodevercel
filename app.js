@@ -1,10 +1,14 @@
 // // const 'module-alias/register'
-// // require('polyfill')
+require('polyfill')
 const createError = require('http-errors');
 const express = require('express');
+const { expressjwt } = require("express-jwt");
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const jwtConfig = require("./config/secret.js");
+const sessionSecretConfig = require("./config/sessionSecret.js");
+const session = require('express-session');
 // const { fileURLToPath } = require('node:url');
 
 // const bodyParser = require("body-parser")        //获取模块
@@ -12,8 +16,27 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index.js');
 const usersRouter = require('./routes/users.js');
 const onelineUser = require('./routes/onelineUser.js');
-
 var app = express();
+app.use(session({
+  secret: sessionSecretConfig.sessionSecret,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: true }
+}));
+//jwt中间件
+//安装的express-jwt模块会默认为最新版本，更新后的jwt需要在配置中加入algorithms属性，即设置jwt的算法。
+// 一般HS256为配置algorithms的默认值。
+// unless 指定哪些路径应该跳过JWT验证（例如，生成token的端点和公共资源的端点）
+app.use(
+  expressjwt({ secret: jwtConfig.jwtSecret, algorithms: ["HS256"] }).unless({
+    path: [
+      /^\/registerReturnToken\/*/,
+      /^\/yzm\/*/,
+      /^\/setSession\/*/,
+    ],
+    // path: [/^\/registerReturnToken\/*/],
+  })
+);
 
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));
@@ -56,9 +79,9 @@ const getKey = app.get("sss")
 console.log("getKey>>", getKey);
 
 
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
-// app.use('/onlineUser', onelineUser);
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/onlineUser', onelineUser);
 
 app.use('/downloads', express.static('files'));
 // view engine setup
@@ -86,9 +109,13 @@ app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+  const { code, name, message } = err
   // render the error page
   res.status(err.status || 500);
-  res.render('aaa');
+  res.send({
+    code, name, message
+  })
+  // res.render('aaa');
 });
 
 module.exports = app;
