@@ -49,21 +49,21 @@ console.log(">>>>>>>>>>>a", info?.a);
 //     res.send('Update the book')
 //   })
 
-app.set("sss", "sssaaa")
-app.disable("sss")
-app.enable("sss")
-const getKey = app.get("sss")
-console.log("getKey>>", getKey);
+// app.set("sss", "sssaaa")
+// app.disable("sss")
+// app.enable("sss")
+// const getKey = app.get("sss")
+// console.log("getKey>>", getKey);
 
 
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 // app.use('/onlineUser', onelineUser);
 
-app.use('/downloads', express.static('files'));
+// app.use('/downloads', express.static('files'));
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
 
 
 
@@ -80,15 +80,15 @@ app.get('/ttt', (req, res) => {
 // });
 
 // error handler
-app.use(function (err, req, res, next) {
-  const express1 = express;
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// app.use(function (err, req, res, next) {
+//   const express1 = express;
+//   // set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('aaa');
-});
+//   // render the error page
+//   res.status(err.status || 500);
+//   res.render('aaa');
+// });
 
 module.exports = app;
