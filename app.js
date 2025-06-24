@@ -68,9 +68,9 @@ var app = express();
 
 
 // // 接下来的代码是您的路由定义和其他中间件的使用。
-// app.get('/ttt', (req, res) => {
-//   res.send('Hello, Wossrld!');
-// })
+app.get('/ttt', (req, res) => {
+  res.send('Hello, Wossrld!');
+})
 
 // // catch 404 and forward to error handler
 // app.use(function (req, res, next) {
