@@ -2,7 +2,7 @@
 // // require('polyfill')
 // const createError = require('http-errors');
 const express = require('express');
-const path = require('path');
+// const path = require('path');
 // const cookieParser = require('cookie-parser');
 // const logger = require('morgan');
 // const { fileURLToPath } = require('node:url');
@@ -19,8 +19,8 @@ var app = express();
 // app.use(express.urlencoded({ extended: true }));
 // app.use(express.json());
 // app.use(cookieParser());
-app.use("/downloads", express.static(path.join(__dirname, 'files')));
-app.use("/", express.static(path.join(__dirname, 'public')));
+// app.use("/downloads", express.static(path.join(__dirname, 'files')));
+// app.use("/", express.static(path.join(__dirname, 'public')));
 
 // app.use(bodyParser.urlencoded({extended: true})); //创建 application/x-www-form-urlencoded 解析
 // app.use(bodyParser.json());
