@@ -6,9 +6,18 @@ const jwtConfig = require("../config/secret.js");
 var { expressjwt } = require("express-jwt");
 var { authenticateJWT } = require("../middleware/index.js");
 const svg2img = require('svg2img');
+router.get("/getSession", async (req, res) => {
+ res.send(req.session)
+})
 
 router.get("/setSession", async (req, res) => {
- req.session[`s-${Math.random()}`] = req.query.session;
+ let info = req.session
+
+ Object.entries(req.session).forEach(([k, v]) => {
+  req.session[k] = v
+ })
+ req.session[req.query.sessionKey+Math.random()] = req.query.sessionValue;
+
  res.send(req.session)
 })
 

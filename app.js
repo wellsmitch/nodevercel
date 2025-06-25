@@ -21,7 +21,7 @@ app.use(session({
   secret: sessionSecretConfig.sessionSecret,
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: true }
+  cookie: { secure: "auto" }
 }));
 //jwt中间件
 //安装的express-jwt模块会默认为最新版本，更新后的jwt需要在配置中加入algorithms属性，即设置jwt的算法。
@@ -33,6 +33,7 @@ app.use(
       /^\/registerReturnToken\/*/,
       /^\/yzm\/*/,
       /^\/setSession\/*/,
+      /^\/getSession\/*/,
     ],
     // path: [/^\/registerReturnToken\/*/],
   })
