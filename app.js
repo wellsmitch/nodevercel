@@ -38,6 +38,9 @@ app.use(
   expressjwt({ secret: jwtConfig.jwtSecret, algorithms: ["HS256"] }).unless({
     path: [
       /^\/registerReturnToken\/*/,
+      /^\/downloads\/*/,
+      /^\/stylesheets\/*/,
+      /^\/no\/*/,
       /^\/yzm\/*/,
       /^\/setSession\/*/,
       /^\/getSession\/*/,
