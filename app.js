@@ -9,6 +9,7 @@ const logger = require('morgan');
 const jwtConfig = require("./config/secret.js");
 const sessionSecretConfig = require("./config/sessionSecret.js");
 const session = require('express-session');
+var FileStore = require('session-file-store')(session);
 // const { fileURLToPath } = require('node:url');
 
 // const bodyParser = require("body-parser")        //获取模块
@@ -22,32 +23,48 @@ app.use(session({
   // genid(){
   //   return `iddddd-${Math.random()}`
   // },
-  name:"addddd", //修改session对应cookie的名称
+  name: "addddd", //修改session对应cookie的名称
   resave: false,//强制保存 session 即使它并没有变化
   saveUninitialized: false, //强制将未初始化的 session 存储
-  cookie: { 
-     secure: false  // true 表示只有https协议才能访问cookie  
+  cookie: {
+    maxAge:10000,
+    secure: false  // true 表示只有https协议才能访问cookie  
   },
-  rolling:true  //在每次请求时强行设置 cookie，这将重置 cookie 过期时间（默认：false）
+  rolling: true,  //在每次请求时强行设置 cookie，这将重置 cookie 过期时间（默认：false）
+  store: new FileStore({
+    // 每 10 秒检查并清除过期的session文件
+    reapInterval: 1,
+    logFn(...args) {
+      // console.log('123',args)
+    },
+    path: path.resolve(__dirname, "files/sessoinFile")
+  }),
 }));
 //jwt中间件
 //安装的express-jwt模块会默认为最新版本，更新后的jwt需要在配置中加入algorithms属性，即设置jwt的算法。
 // 一般HS256为配置algorithms的默认值。
 // unless 指定哪些路径应该跳过JWT验证（例如，生成token的端点和公共资源的端点）
-app.use(
-  expressjwt({ secret: jwtConfig.jwtSecret, algorithms: ["HS256"] }).unless({
-    path: [
-      /^\/registerReturnToken\/*/,
-      /^\/downloads\/*/,
-      /^\/stylesheets\/*/,
-      /^\/no\/*/,
-      /^\/yzm\/*/,
-      /^\/setSession\/*/,
-      /^\/getSession\/*/,
-    ],
-    // path: [/^\/registerReturnToken\/*/],
-  })
-);
+// app.use(
+//   expressjwt({
+//      secret: jwtConfig.jwtSecret, 
+//     algorithms: ["HS256"],
+//     isRevoked(req) {
+//       console.log('req',req)
+//       return false
+//     }
+//    }).unless({
+//     path: [
+//       /^\/registerReturnToken\/*/,
+//       /^\/downloads\/*/,
+//       /^\/stylesheets\/*/,
+//       /^\/no\/*/,
+//       /^\/yzm\/*/,
+//       /^\/setSession\/*/,
+//       /^\/getSession\/*/,
+//     ],
+//     // path: [/^\/registerReturnToken\/*/],
+//   })
+// );
 
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));

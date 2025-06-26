@@ -21,39 +21,49 @@
   <button onclick="fn()">上传1sss</button>
   <script>
     console.log(1)
-    const {enqueue} = createPromiseQueue(3)
-    function fn() {
+    const { enqueue } = createPromiseQueue(3)
+    async function fn() {
       const fileObj = fileId.files[0]
-      const chunkSize = 1024 * 10 *10
+      const chunkSize = 1024 * 1024
       const list = []
-      const totalChunk = Math.ceil(fileObj.size/chunkSize)
+      const totalChunk = Math.ceil(fileObj.size / chunkSize)
       let cc = 0
+
       for (let index = 0; index < totalChunk; index++) {
-        
-        const start =   index * chunkSize
-        const end = Math.min(start+chunkSize,fileObj.size)
+
+        const start = index * chunkSize
+        const end = Math.min(start + chunkSize, fileObj.size)
         const chunk = fileObj.slice(start, end)
-        list.push(chunk)
+        const rs = await chunk.arrayBuffer()
+        list.push(rs)
+        console.log(index);
+
+        if (totalChunk - 1 == index) {
+          // console.log(list);
+          // console.log(123);
+        }
+
+
         enqueue(uploadMd)
       }
-    
+
       function uploadMd() {
-        
+
         const ddc = list.pop()
         cc++
-        if(!ddc){return}
+        if (!ddc) { return }
         let fm = new FormData()
-        fm.append("isEnd", list.length===0)
+        fm.append("isEnd", list.length === 0)
         fm.append("dddcccc", 12312231)
         fm.append("fileB", fileId.files[0])
-        return axios.post("/no/uploadFile?a="+cc, fm, {
+        return axios.post("/no/uploadFile?a=" + cc, fm, {
           headers: {
             "Content-Type": "multipart/form-data"
           }
         })
       }
-      
-      
+
+
     }
   </script>
 </body>
