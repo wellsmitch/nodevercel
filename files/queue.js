@@ -17,7 +17,8 @@ function  createPromiseQueue(size,maxRetries=3) {
         activeCount++
         let retries = 0;
         const attemptPromise=()=> {
-            return promiseGenerator()
+            const cc = promiseGenerator() || new Promise(d=>d())
+            return cc&&cc
             .then(d=> {
                 const result = d.data
                 results.push(result)
@@ -26,7 +27,10 @@ function  createPromiseQueue(size,maxRetries=3) {
             .catch(error=> {
                 if(retries<maxRetries) {
                     retries++
-                    return attemptPromise()
+                    const ddd = attemptPromise()
+                    return ddd
+                }else {
+                    console.error("已达最大重试次数")
                 }
             }).finally(()=> {
                 activeCount--;
