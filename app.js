@@ -14,9 +14,9 @@ var FileStore = require('session-file-store')(session);
 
 // const bodyParser = require("body-parser")        //获取模块
 
-const indexRouter = require('./routes/index.js');
-const usersRouter = require('./routes/users.js');
-const onelineUser = require('./routes/onelineUser.js');
+// const indexRouter = require('./routes/index.js');
+// const usersRouter = require('./routes/users.js');
+// const onelineUser = require('./routes/onelineUser.js');
 var app = express();
 app.use(session({
   secret: sessionSecretConfig.sessionSecret, //服务器端生成 session 的签名
@@ -119,9 +119,9 @@ app.use(function (req, res, next) {
 });
 
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/onlineUser', onelineUser);
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
+// app.use('/onlineUser', onelineUser);
 
 app.use('/downloads', express.static('files'));
 // view engine setup
