@@ -8,7 +8,7 @@ const doGet = (tableName) => {
  router.get(`/api/get${tableName}`, multer().any(), async (req, res) => {
   const searchInfoList = []
   Object.entries(req.query).concat(req.body).forEach((kvList) => {
-   if (kvList[0]) {
+   if (kvList&&kvList[0]) {
     searchInfoList.push({
      [kvList[0]]: {
       "$lt": kvList[1] || "",// "$options": "i"
