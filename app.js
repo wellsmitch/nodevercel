@@ -31,14 +31,14 @@ app.use(session({
     secure: false  // true 表示只有https协议才能访问cookie  
   },
   rolling: true,  //在每次请求时强行设置 cookie，这将重置 cookie 过期时间（默认：false）
-  // store: new FileStore({
-  //   // 每 10 秒检查并清除过期的session文件
-  //   reapInterval: 1,
-  //   logFn(...args) {
-  //     // console.log('123',args)
-  //   },
-  //   path: path.resolve(__dirname, "files/sessoinFile")
-  // }),
+  store: new FileStore({
+    // 每 10 秒检查并清除过期的session文件
+    reapInterval: 1,
+    logFn() {
+      // console.log('123',args)
+    },
+    path: path.resolve(__dirname, "files/sessoinFile")
+  }),
 }));
 // //jwt中间件
 // //安装的express-jwt模块会默认为最新版本，更新后的jwt需要在配置中加入algorithms属性，即设置jwt的算法。
