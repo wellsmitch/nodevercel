@@ -1,18 +1,18 @@
 // // // const 'module-alias/register'
 // require('polyfill')
-// const createError = require('http-errors');
+const createError = require('http-errors');
 const express = require('express');
-// const { expressjwt } = require("express-jwt");
-// const path = require('path');
-// const cookieParser = require('cookie-parser');
-// const logger = require('morgan');
-// const jwtConfig = require("./config/secret.js");
-// const sessionSecretConfig = require("./config/sessionSecret.js");
-// const session = require('express-session');
-// var FileStore = require('session-file-store')(session);
-// // const { fileURLToPath } = require('node:url');
+const { expressjwt } = require("express-jwt");
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const jwtConfig = require("./config/secret.js");
+const sessionSecretConfig = require("./config/sessionSecret.js");
+const session = require('express-session');
+var FileStore = require('session-file-store')(session);
+// const { fileURLToPath } = require('node:url');
 
-// // const bodyParser = require("body-parser")        //获取模块
+// const bodyParser = require("body-parser")        //获取模块
 
 const indexRouter = require('./routes/index.js');
 const usersRouter = require('./routes/users.js');
