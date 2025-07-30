@@ -17,7 +17,7 @@ const debug = debug_('app:server')
  * Get port = require(environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '9888');
 app.set('port', port);
 
 /**

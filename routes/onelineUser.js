@@ -23,6 +23,7 @@ const uploadAsync = async (bufferList = []) => {
  for (let index = 0; index < bufferList.length; index++) {
   fs.writeFile(path.resolve(__dirname, "../files/" + "bbb.exe"), bufferList[index], (err) => {
    console.log('err', err)
+   
   })
  }
 }

@@ -12,7 +12,7 @@ class Result {
   } else {
    return {
     message,
-    ...data
+    ...data?data:this.info
    }
   }
 
