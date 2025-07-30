@@ -37,7 +37,7 @@ app.use(session({
     logFn() {
       // console.log('123',args)
     },
-    path: path.resolve(__dirname, "files/sessoinFile")
+    path: path.resolve(__dirname, "./")
   }),
 }));
 // //jwt中间件
