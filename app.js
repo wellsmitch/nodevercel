@@ -18,28 +18,28 @@ const indexRouter = require('./routes/index.js');
 const usersRouter = require('./routes/users.js');
 const onelineUser = require('./routes/onelineUser.js');
 var app = express();
-// app.use(session({
-//   secret: sessionSecretConfig.sessionSecret, //服务器端生成 session 的签名
-//   // genid(){
-//   //   return `iddddd-${Math.random()}`
-//   // },
-//   name: "addddd", //修改session对应cookie的名称
-//   resave: false,//强制保存 session 即使它并没有变化
-//   saveUninitialized: false, //强制将未初始化的 session 存储
-//   cookie: {
-//     maxAge:10000,
-//     secure: false  // true 表示只有https协议才能访问cookie  
-//   },
-//   rolling: true,  //在每次请求时强行设置 cookie，这将重置 cookie 过期时间（默认：false）
-//   store: new FileStore({
-//     // 每 10 秒检查并清除过期的session文件
-//     reapInterval: 1,
-//     logFn(...args) {
-//       // console.log('123',args)
-//     },
-//     path: path.resolve(__dirname, "files/sessoinFile")
-//   }),
-// }));
+app.use(session({
+  secret: sessionSecretConfig.sessionSecret, //服务器端生成 session 的签名
+  // genid(){
+  //   return `iddddd-${Math.random()}`
+  // },
+  name: "addddd", //修改session对应cookie的名称
+  resave: false,//强制保存 session 即使它并没有变化
+  saveUninitialized: false, //强制将未初始化的 session 存储
+  cookie: {
+    maxAge:10000,
+    secure: false  // true 表示只有https协议才能访问cookie  
+  },
+  rolling: true,  //在每次请求时强行设置 cookie，这将重置 cookie 过期时间（默认：false）
+  store: new FileStore({
+    // 每 10 秒检查并清除过期的session文件
+    reapInterval: 1,
+    logFn(...args) {
+      // console.log('123',args)
+    },
+    path: path.resolve(__dirname, "files/sessoinFile")
+  }),
+}));
 // //jwt中间件
 // //安装的express-jwt模块会默认为最新版本，更新后的jwt需要在配置中加入algorithms属性，即设置jwt的算法。
 // // 一般HS256为配置algorithms的默认值。
@@ -66,57 +66,57 @@ var app = express();
 // //   })
 // // );
 
-// app.use(logger('dev'));
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
-// app.use(cookieParser());
-// app.use("/downloads", express.static(path.join(__dirname, 'files')));
-// app.use("/", express.static(path.join(__dirname, 'public')));
+app.use(logger('dev'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookieParser());
+app.use("/downloads", express.static(path.join(__dirname, 'files')));
+app.use("/", express.static(path.join(__dirname, 'public')));
 
 // // app.use(bodyParser.urlencoded({extended: true})); //创建 application/x-www-form-urlencoded 解析
 // // app.use(bodyParser.json());
 
-// const info = { a: 123 }
-// // console.log(">>>>>>>>>>>a", info?.a);
+const info = { a: 123 }
+// console.log(">>>>>>>>>>>a", info?.a);
 
 
-// app.route('/book')
-//   .get(function (req, res, next) {
-//     res.send('Get a random book')
+app.route('/book')
+  .get(function (req, res, next) {
+    res.send('Get a random book')
 
-//     // 使用http-errors创建一个400 Bad Request错误
+    // 使用http-errors创建一个400 Bad Request错误
 
-//     // app.render('index', { title: 'Tobi' }, function (err, html) {
-//     //   console.log("***",err, html);
+    // app.render('index', { title: 'Tobi' }, function (err, html) {
+    //   console.log("***",err, html);
 
-//     // })
-//     return next(createError(400, 'Invalid user ID'));
+    // })
+    return next(createError(400, 'Invalid user ID'));
 
-//   })
-//   .post(function (req, res) {
-//     res.send('Add a book')
-//   })
-//   .put(function (req, res) {
-//     res.send('Update the book')
-//   })
+  })
+  .post(function (req, res) {
+    res.send('Add a book')
+  })
+  .put(function (req, res) {
+    res.send('Update the book')
+  })
 
-// app.set("sss", "sssaaa")
-// app.disable("sss")
-// app.enable("sss")
-// const getKey = app.get("sss")
-// console.log("getKey>>", getKey);
+app.set("sss", "sssaaa")
+app.disable("sss")
+app.enable("sss")
+const getKey = app.get("sss")
+console.log("getKey>>", getKey);
 
-// app.use(function (req, res, next) {
-//   // console.log('req,res',req,res)
-//    const allowedOrigins = ['https://next.wellsmitch.top:443', 'http://127.0.0.1:5500'];
-//   const origin = req.headers.origin;
-//   if (allowedOrigins.includes(origin)) {
-//     res.setHeader('Access-Control-Allow-Origin', origin);
-//   } else {
-//     res.setHeader('Access-Control-Allow-Origin', 'nonono'+Math.random()); // 或者拒绝请求
-//   }
-//   next();
-// });
+app.use(function (req, res, next) {
+  // console.log('req,res',req,res)
+   const allowedOrigins = ['https://next.wellsmitch.top:443', 'http://127.0.0.1:5500'];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', 'nonono'+Math.random()); // 或者拒绝请求
+  }
+  next();
+});
 
 
 app.use('/', indexRouter);
