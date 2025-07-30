@@ -108,7 +108,7 @@ console.log("getKey>>", getKey);
 
 app.use(function (req, res, next) {
   // console.log('req,res',req,res)
-   const allowedOrigins = ['https://next.wellsmitch.top:443', 'http://127.0.0.1:5500'];
+   const allowedOrigins = ['https://next.wellsmitch.top', 'http://127.0.0.1'];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
