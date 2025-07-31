@@ -111,9 +111,9 @@ app.use(function (req, res, next) {
    const allowedOrigins = ['https://next.wellsmitch.top', 'http://127.0.0.1'];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Access-Control-Allow-Origin', "*");
   } else {
-    res.setHeader('Access-Control-Allow-Origin', 'nonono'+Math.random()); // 或者拒绝请求
+    res.setHeader('Access-Control-Allow-Origin', 'nonono-hahaha'+Math.random()); // 或者拒绝请求
   }
   next();
 });
