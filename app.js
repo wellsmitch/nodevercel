@@ -107,9 +107,10 @@ const getKey = app.get("sss")
 console.log("getKey>>", getKey);
 
 app.use(function (req, res, next) {
-  // console.log('req,res',req,res)
+
    const allowedOrigins = ['https://next.wellsmitch.top', 'http://127.0.0.1'];
   const origin = req.headers.origin;
+    console.log('origin>>>>>>>>>>>>>>>>',origin)
   if (allowedOrigins.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', "*");
   } else {
