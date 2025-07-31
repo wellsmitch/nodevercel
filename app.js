@@ -111,7 +111,7 @@ app.use(function (req, res, next) {
    const allowedOrigins = ['https://next.wellsmitch.top', 'http://127.0.0.1'];
   const origin = req.headers.origin;
     console.log('origin>>>>>>>>>>>>>>>>',origin)
-  if (allowedOrigins.some(str=>origin.indexOf(str)>-1)) {
+  if (allowedOrigins.some(str=>origin&&origin.indexOf(str)>-1)) {
     res.setHeader('Access-Control-Allow-Origin', "*");
   } else {
         res.setHeader('Access-Control-Allow-Origin', "*");
